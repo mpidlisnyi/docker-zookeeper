@@ -11,8 +11,6 @@ ENV ZOO_USER=zookeeper \
     ZOO_SYNC_LIMIT=2
 
 RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests  -y \
-	ca-certificates \
-	openssh-client \
 	wget \
 	make \
 	gnupg \
