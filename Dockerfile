@@ -41,8 +41,7 @@ VOLUME ["$ZOO_DATA_DIR", "$ZOO_DATA_LOG_DIR"]
 
 EXPOSE $ZOO_PORT 2888 3888
 
-ENV PATH=$PATH:/$DISTRO_NAME/bin \
-    ZOOCFGDIR=$ZOO_CONF_DIR
+ENV PATH=$PATH:/$DISTRO_NAME/bin
 
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]

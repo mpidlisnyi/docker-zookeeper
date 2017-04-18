@@ -2,6 +2,8 @@
 
 set -e
 
+ZOOCFGDIR=$ZOO_CONF_DIR
+
 # Allow the container to be started with `--user`
 if [ "$1" = 'zkServer.sh' -a "$(id -u)" = '0' ]; then
     chown -R "$ZOO_USER" "$ZOO_DATA_DIR" "$ZOO_DATA_LOG_DIR"
