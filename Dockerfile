@@ -1,8 +1,7 @@
 FROM openjdk:8-jre
 MAINTAINER Maksym Pidlisnyi <maksim@nightbook.info>
 
-ENV ZOO_USER=zookeeper \
-    ZOOCFGDIR=/conf \
+ENV ZOOCFGDIR=/conf \
     ZOO_DATA_DIR=/data \
     ZOO_DATA_LOG_DIR=/datalog \
     ZOO_PORT=2181 \
@@ -17,9 +16,7 @@ RUN apt-get update && apt-get install --no-install-recommends --no-install-sugge
 
 # Add a user and make dirs
 RUN set -x \
-    && useradd -m "$ZOO_USER" \
-    && mkdir -p "$ZOO_DATA_LOG_DIR" "$ZOO_DATA_DIR" "$ZOOCFGDIR" \
-    && chown "$ZOO_USER:$ZOO_USER" "$ZOO_DATA_LOG_DIR" "$ZOO_DATA_DIR" "$ZOOCFGDIR"
+    && mkdir -p "$ZOO_DATA_LOG_DIR" "$ZOO_DATA_DIR" "$ZOOCFGDIR"
 
 ARG GPG_KEY=C823E3E5B12AF29C67F81976F5CECB3CB5E9BD2D
 ARG DISTRO_NAME=zookeeper-3.4.9
