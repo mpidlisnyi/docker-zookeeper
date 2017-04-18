@@ -2,8 +2,6 @@
 
 set -e
 
-ZOOCFGDIR=$ZOO_CONF_DIR
-
 # Allow the container to be started with `--user`
 if [ "$1" = 'zkServer.sh' -a "$(id -u)" = '0' ]; then
     chown -R "$ZOO_USER" "$ZOO_DATA_DIR" "$ZOO_DATA_LOG_DIR"
@@ -11,8 +9,8 @@ if [ "$1" = 'zkServer.sh' -a "$(id -u)" = '0' ]; then
 fi
 
 # Generate the config only if it doesn't exist
-if [ ! -f "$ZOO_CONF_DIR/zoo.cfg" ]; then
-    CONFIG="$ZOO_CONF_DIR/zoo.cfg"
+if [ ! -f "$ZOOCFGDIR/zoo.cfg" ]; then
+    CONFIG="$ZOOCFGDIR/zoo.cfg"
 
     echo "clientPort=$ZOO_PORT" >> "$CONFIG"
     echo "dataDir=$ZOO_DATA_DIR" >> "$CONFIG"
