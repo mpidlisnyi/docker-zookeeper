@@ -33,6 +33,7 @@ RUN set -x \
     && mv "$DISTRO_NAME/conf/"* "$ZOOCFGDIR" \
     && rm -r "$GNUPGHOME" "$DISTRO_NAME.tar.gz" "$DISTRO_NAME.tar.gz.asc"
 
+COPY log4j.properties "${ZOOCFGDIR}/log4j.properties"
 WORKDIR $DISTRO_NAME
 VOLUME ["$ZOO_DATA_DIR", "$ZOO_DATA_LOG_DIR"]
 
