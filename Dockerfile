@@ -27,12 +27,11 @@ RUN wget -q "http://www.apache.org/dist/zookeeper/$DISTRO_NAME/$DISTRO_NAME.tar.
 COPY KEYS KEYS
 
 RUN set -x \
-    && export GNUPGHOME="$(mktemp -d)" \
     && gpg --import KEYS \
     && gpg --batch --verify "$DISTRO_NAME.tar.gz.asc" "$DISTRO_NAME.tar.gz" \
     && tar -xzf "$DISTRO_NAME.tar.gz" \
     && mv "$DISTRO_NAME/conf/"* "$ZOOCFGDIR" \
-    && rm -r "$GNUPGHOME" "$DISTRO_NAME.tar.gz" "$DISTRO_NAME.tar.gz.asc"
+    && rm -r "$DISTRO_NAME.tar.gz" "$DISTRO_NAME.tar.gz.asc"
 
 COPY log4j.properties "${ZOOCFGDIR}/log4j.properties"
 WORKDIR $DISTRO_NAME
